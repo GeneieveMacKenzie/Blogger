@@ -8,7 +8,7 @@ const _model = new Schema({
     body: { type: String },
     author: { // How could this data get.... populated 
         _id: { type: ObjectId, ref: "User", required: true },
-        name: "Jim Bob"
+        name: {type: String}
     }
 }, { timestamps: true })
 

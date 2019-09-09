@@ -12,7 +12,7 @@ export default class BloggerController {
             //NOTE all routes after the authenticate method will require the user to be logged in to access
             .get('', this.getAll)
             .get('/:id', this.getById)
-            .get('/:id/comments, this.getComments')
+            .get('/:id/comments', this.getCommentsByAuthor)
             .use(Authorize.authenticated)
             .post('', this.create)
             .put('/:id', this.edit)
@@ -38,9 +38,9 @@ export default class BloggerController {
     }
 
 
-    async getComments(req, res, next) {
+    async getCommentsByAuthor(req, res, next) {
         try {
-            let data = await _commentService.findById(req.params.id)
+            let comments = await _commentService.find({ author: req.params.id })
             res.send(data)
         } catch (error) { next(error)
 
