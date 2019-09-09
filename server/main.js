@@ -46,8 +46,8 @@ import BloggerController from './controllers/BloggerController'
 import CommentController from './controllers/CommentController';
 
 //NOTE remember the forward slash at the start of your path!
-server.use('/api/blogger', new BloggerController().router)
-server.use('/api/comment', new CommentController().router)
+server.use('/api/blogs', new BloggerController().router)
+server.use('/api/comments', new CommentController().router)
 
 
 

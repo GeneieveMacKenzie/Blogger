@@ -4,7 +4,7 @@ const ObjectId = Schema.Types.ObjectId
 
 const _model = new Schema({
     title: { type: String, required: true },
-    description: { type: String, required: true },
+    description: { type: String, default: "test", required: true },
     author: { type: ObjectId, ref: 'User', required: true },
     img: { type: String },
     body: { type: String },
@@ -12,6 +12,6 @@ const _model = new Schema({
 
 export default class BloggerService {
     get repository() {
-        return mongoose.model('blogger', _model)
+        return mongoose.model('blogs', _model)
     }
 }
